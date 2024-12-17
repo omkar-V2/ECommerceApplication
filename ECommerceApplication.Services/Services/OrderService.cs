@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ECommerceApplication.Data;
-using ECommerceApplication.Data.Entities;
+﻿using ECommerceApplication.Data;
 using ECommerceApplication.Services.Interfaces;
 
 namespace ECommerceApplication.Services.Services;
@@ -35,6 +29,8 @@ public class OrderService : IOrderService
 
     public IEnumerable<object> GetProductReturnRateByYear(int year)
     {
+
+
         var result = Db.Orders
                      .Where(yr => yr.PurchaseTime.Year == year)
                      .SelectMany(ord => ord.Products, (ord, product) => new

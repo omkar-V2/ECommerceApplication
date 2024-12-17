@@ -23,7 +23,6 @@ public class ProductsController : ControllerBase
         return new string[] { "value1", "value2" };
     }
 
-
     [HttpGet("GetProductsPartner/limit/{limit}")]
     public async Task<ActionResult<IEnumerable<Partner>>> GetProductsPartner(int limit)
     {
