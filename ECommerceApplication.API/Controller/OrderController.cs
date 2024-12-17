@@ -22,7 +22,6 @@ public class OrderController : ControllerBase
         return new string[] { "value1", "value2" };
     }
 
-
     [HttpGet("seasonal-trends/{year}")]
     public ActionResult<IEnumerable<object>> GetProductOrderCountOfEachMonthByYear(int year)
     {

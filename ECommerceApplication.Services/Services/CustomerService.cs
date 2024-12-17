@@ -24,6 +24,24 @@ public class CustomerService : ICustomerService
         return result;
     }
 
+    public IEnumerable<object> GetAllCustomerByLoyaltyTier()
+    {
+        var result = Db.CustomerActivities
+                     .GroupBy(groupCust => new
+                     {
+                         groupCust.PurchaseDate.Year,
+                         groupCust.CustomerId
+                     })
+                     .Select(cust => new
+                     {
+                         customerId = cust.Key.CustomerId,
+                         loyaltyTier = GetLoyaltyTier(cust.Count())
+                     });
+
+
+        return result;
+    }
+
     private string GetLoyaltyTier(int customerActivityCount)
     {
         if (customerActivityCount >= 12)

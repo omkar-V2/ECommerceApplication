@@ -22,8 +22,7 @@ public class SalesController : ControllerBase
     {
         return new string[] { "value1", "value2" };
     }
-
-    //http://localhost:5141/products/seasonal-tops?topN=3
+     
     [HttpGet("seasonal-tops/{top}")]
     public ActionResult<Dictionary<string, IEnumerable<object>>> GetProductTopTotalSalesBySeason(int top)
     {

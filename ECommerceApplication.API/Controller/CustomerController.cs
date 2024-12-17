@@ -36,5 +36,21 @@ public class CustomerController : ControllerBase
         {
             return StatusCode(StatusCodes.Status500InternalServerError, ex);
         }
-    } 
+    }
+
+
+    [HttpGet("loyalty")]
+    public ActionResult<IEnumerable<object>> GetCustomerByLoyaltyTierOfYear()
+    {
+        try
+        {
+            var result = _customerService.GetAllCustomerByLoyaltyTier();
+
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex);
+        }
+    }
 }
